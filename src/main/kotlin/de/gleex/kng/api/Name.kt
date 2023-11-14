@@ -9,4 +9,7 @@ value class Name(private val name: String) {
      * Returns this [Name] as classic [String].
      */
     fun asString(): String = name
+    operator fun plus(otherName: Name): Name {
+        return Name(name + otherName.name)
+    }
 }
