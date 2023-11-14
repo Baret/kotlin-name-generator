@@ -14,4 +14,4 @@ class SimpleWordList(private val words: List<String>): WordList {
 /**
  * Creates a [WordList] from this list.
  */
-fun List<String>.asWordList() = SimpleWordList(this)
+fun List<String>.asWordList(): WordList = SimpleWordList(this)

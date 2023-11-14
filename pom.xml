@@ -20,6 +20,7 @@
         <kotlin.version>1.9.20</kotlin.version>
 
         <dokka.version>1.9.10</dokka.version>
+        <kotest.version>5.7.1</kotest.version>
     </properties>
 
     <dependencies>
@@ -27,6 +28,13 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.kotest</groupId>
+            <artifactId>kotest-runner-junit5-jvm</artifactId>
+            <version>${kotest.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
