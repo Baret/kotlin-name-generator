@@ -6,7 +6,7 @@ import de.gleex.kng.api.NameGenerator
 /**
  * TODO: docs
  */
-class CombiningGenerator(
+internal class CombiningGenerator(
     private val first: NameGenerator,
     private val second: NameGenerator
 ): NameGenerator {
