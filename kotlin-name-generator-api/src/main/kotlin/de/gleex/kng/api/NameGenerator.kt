@@ -8,7 +8,7 @@ interface NameGenerator: Iterator<Name> {
      * Generates the next [Name], if possible.
      *
      * @throws NameGeneratorExhaustedException when this is a finite generator and the last
-     *      [Name] was generated with the previous call to next()
+     *      available [Name] was generated with the previous call to next()
      */
     override fun next(): Name
 
@@ -23,4 +23,11 @@ interface NameGenerator: Iterator<Name> {
      * order of [Names][Name] as the previous times. But the contract does not require such behavior.
      */
     fun reset()
+
+    /**
+     * If this flag is `true`, the generator automatically resets itself when all [names][Name] have been
+     * generated. This means it provides an endless stream of values. [reset] does not need to be called
+     * manually.
+     */
+    val isAutoResetting: Boolean
 }

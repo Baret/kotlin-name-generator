@@ -6,10 +6,13 @@ import de.gleex.kng.api.NameGeneratorExhaustedException
 import de.gleex.kng.api.WordList
 
 /**
- * A simple [NameGenerator] going through [words] one after another
+ * A simple [NameGenerator] going through [words] one after another without repetition.
  */
-class SimpleNameGenerator(private val words: WordList): NameGenerator {
+internal class SimpleNameGenerator(private val words: WordList): NameGenerator {
     private var currentIndex = 0
+
+    override val isAutoResetting: Boolean = false
+
     override fun next(): Name {
         if(currentIndex >= words.size) {
             throw NameGeneratorExhaustedException
