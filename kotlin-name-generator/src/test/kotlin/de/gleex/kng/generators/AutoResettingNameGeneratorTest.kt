@@ -9,6 +9,7 @@ import io.kotest.core.spec.style.WordSpec
 import io.kotest.matchers.shouldBe
 import io.mockk.*
 
+@Suppress("RedundantExplicitType")
 class AutoResettingNameGeneratorTest: WordSpec() {
     init {
         "An auto resetting generator" should {
