@@ -12,6 +12,10 @@ import io.mockk.*
 class AutoResettingNameGeneratorTest: WordSpec() {
     init {
         "An auto resetting generator" should {
+            "be auto resetting" {
+                AutoResettingNameGenerator(mockk<NameGenerator>()).isAutoResetting shouldBe true
+            }
+
             "never throw an exhausted exception" {
                 val delegate = SimpleNameGenerator(wordListOf("foo", "bar"))
                 val autoResettingNameGenerator: AutoResettingNameGenerator = AutoResettingNameGenerator(delegate)
@@ -44,6 +48,29 @@ class AutoResettingNameGeneratorTest: WordSpec() {
                     mockedDelegate.next()
                     mockedDelegate.hasNext()
                 }
+            }
+        }
+
+        "Reset on an auto resetting generator" should {
+            "correctly delegate" {
+                val mockedDelegate = mockk<NameGenerator> {
+                    every { reset() } just Runs
+                }
+
+                val autoResettingNameGenerator: AutoResettingNameGenerator = AutoResettingNameGenerator(mockedDelegate)
+
+                autoResettingNameGenerator.reset()
+
+                verifyAll {
+                    mockedDelegate.reset()
+                }
+            }
+
+            val delegate = SimpleNameGenerator(wordListOf("foo", "bar"))
+            val autoResettingNameGenerator: AutoResettingNameGenerator = AutoResettingNameGenerator(delegate)
+            "actually reset the generator".config(invocations = 100) {
+                autoResettingNameGenerator.next() shouldBe Name("foo")
+                autoResettingNameGenerator.reset()
             }
         }
     }
