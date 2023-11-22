@@ -9,6 +9,8 @@ interface NameGenerator: Iterator<Name> {
      *
      * @throws NameGeneratorExhaustedException when this is a finite generator and the last
      *      available [Name] was generated with the previous call to next()
+     *
+     *  @see reset
      */
     override fun next(): Name
 
