@@ -12,6 +12,8 @@ internal class CombiningGenerator(
 ): NameGenerator {
     private var secondName: Name? = null
 
+    override val isAutoResetting: Boolean = first.isAutoResetting || second.isAutoResetting
+
     override fun next(): Name {
         if(secondName == null) {
             secondName = second.next()

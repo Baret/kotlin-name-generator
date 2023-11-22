@@ -10,5 +10,9 @@ fun nameGenerator(wordList: WordList): NameGenerator = SimpleNameGenerator(wordL
 
 fun nameGenerator(wordList: WordList, settingsInit: NameGeneratorSettingsBuilder.() -> Unit): NameGenerator {
     val settings = NameGeneratorSettingsBuilder().apply(settingsInit).build()
-    return SettingsBasedGenerator(wordList, settings)
+    var generator: NameGenerator = SimpleNameGenerator(wordList)
+    if(settings.isAutoResetting) {
+        generator = AutoResettingNameGenerator(generator)
+    }
+    return generator
 }
