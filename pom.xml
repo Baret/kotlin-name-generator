@@ -68,6 +68,52 @@
     <build>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.4.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <reactorModuleConvergence/>
+
+                                <dependencyConvergence/>
+                                <requireUpperBoundDeps/>
+
+                                <requireNoRepositories/>
+                                <requireReleaseDeps>
+                                        <excludes>
+                                            <exclude>de.gleex.kng*</exclude>
+                                        </excludes>
+                                </requireReleaseDeps>
+
+                                <requirePluginVersions>
+                                    <!-- default lifecycle bindings -->
+                                    <unCheckedPluginList>
+                                        org.apache.maven.plugins:maven-clean-plugin,
+                                        org.apache.maven.plugins:maven-install-plugin,
+                                        org.apache.maven.plugins:maven-site-plugin,
+                                        org.apache.maven.plugins:maven-deploy-plugin,
+                                        org.apache.maven.plugins:maven-resources-plugin,
+                                        org.apache.maven.plugins:maven-compiler-plugin,
+                                        org.apache.maven.plugins:maven-jar-plugin
+                                    </unCheckedPluginList>
+                                </requirePluginVersions>
+                                <requireProfileIdsExist/>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
         <pluginManagement>
             <plugins>
                 <plugin>
