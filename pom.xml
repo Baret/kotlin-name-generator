@@ -19,9 +19,9 @@
         <kotlin.version>1.9.20</kotlin.version>
         <kotlin.api.version>1.9</kotlin.api.version>
         <kotlin.compiler.languageVersion>1.9</kotlin.compiler.languageVersion>
-        <kotlin.compiler.jvmTarget>17</kotlin.compiler.jvmTarget>
+        <kotlin.compiler.jvmTarget>21</kotlin.compiler.jvmTarget>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release>
 
         <dokka.version>1.9.10</dokka.version>
         <kotest.version>5.7.1</kotest.version>
