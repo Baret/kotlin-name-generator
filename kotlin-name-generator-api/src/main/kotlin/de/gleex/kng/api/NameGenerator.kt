@@ -13,6 +13,21 @@ package de.gleex.kng.api
  * generator will create an endless loop.
  */
 interface NameGenerator: Iterator<Name> {
+
+    /**
+     * If this flag is `true`, the generator automatically resets itself when all [names][Name] have been
+     * generated. This means it provides an endless stream of values. [reset] does not need to be called
+     * manually.
+     *
+     * **Be careful when iterating over an auto-resetting [NameGenerator]!** You may end up in an endless loop.
+     */
+    val isAutoResetting: Boolean
+
+    /**
+     * The total number of [names][Name] this generator can generate before needing to [reset].
+     */
+    val nameCount: Int
+
     /**
      * Generates the next [Name], if possible.
      *
@@ -34,13 +49,4 @@ interface NameGenerator: Iterator<Name> {
      * order of [Names][Name] as the previous times. But the contract does not require such behavior.
      */
     fun reset()
-
-    /**
-     * If this flag is `true`, the generator automatically resets itself when all [names][Name] have been
-     * generated. This means it provides an endless stream of values. [reset] does not need to be called
-     * manually.
-     *
-     * **Be careful when iterating over an auto-resetting [NameGenerator]!** You may end up in an endless loop.
-     */
-    val isAutoResetting: Boolean
 }

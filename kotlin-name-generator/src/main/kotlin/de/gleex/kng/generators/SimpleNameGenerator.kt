@@ -13,6 +13,8 @@ internal class SimpleNameGenerator(private val words: WordList): NameGenerator {
 
     override val isAutoResetting: Boolean = false
 
+    override val nameCount: Int = words.size
+
     override fun next(): Name {
         if(currentIndex >= words.size) {
             throw NameGeneratorExhaustedException

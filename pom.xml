@@ -45,9 +45,10 @@
 
             <dependency>
                 <groupId>io.kotest</groupId>
-                <artifactId>kotest-runner-junit5-jvm</artifactId>
+                <artifactId>kotest-bom</artifactId>
                 <version>${kotest.version}</version>
-                <scope>test</scope>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>io.mockk</groupId>
@@ -158,6 +159,7 @@
                         </execution>
                         <execution>
                             <id>default-report</id>
+                            <phase>test</phase>
                             <goals>
                                 <goal>report</goal>
                             </goals>
