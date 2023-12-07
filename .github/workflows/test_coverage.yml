@@ -31,3 +31,4 @@ jobs:
         min-coverage-changed-files: 80
         update-comment: true
         title: "Test coverage report"
+        pass-emoji: ":green_circle:"
