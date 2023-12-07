@@ -42,7 +42,7 @@ jobs:
         script: |
           core.setFailed('Overall coverage is less than 75%!')
     - name: Fail PR if coverage of changed code is less than 80%
-      if: ${{ GITHUB_REF != master && steps.jacoco.outputs.coverage-changed-files < 80.0 }}
+      if: ${{ github.ref != 'master' && steps.jacoco.outputs.coverage-changed-files < 80.0 }}
       uses: actions/github-script@v6
       with:
         script: |
