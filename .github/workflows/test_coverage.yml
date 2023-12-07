@@ -1,11 +1,8 @@
 name: Report test coverage
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [ "**" ]
   pull_request:
-    branches: [ "main", "release" ]
+    branches: [ "**" ]
 
 jobs:
   build:
