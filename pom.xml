@@ -25,12 +25,15 @@
 
         <dokka.version>1.9.10</dokka.version>
         <kotest.version>5.7.1</kotest.version>
+
+        <jacoco.plugin.version>0.8.11</jacoco.plugin.version>
     </properties>
 
     <modules>
         <module>kotlin-name-generator-api</module>
         <module>kotlin-name-generator</module>
         <module>kotlin-name-generator-examples</module>
+        <module>kng-test-coverage-report</module>
     </modules>
 
     <dependencyManagement>
@@ -124,7 +127,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.11</version>
+                <version>${jacoco.plugin.version}</version>
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>
