@@ -1,8 +1,12 @@
 package de.gleex.kng.generators
 
 import de.gleex.kng.api.NameGenerator
+import de.gleex.kng.api.NameGeneratorExhaustedException
+import de.gleex.kng.wordlist.wordListOf
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.common.ExperimentalKotest
 import io.kotest.core.spec.style.WordSpec
+import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 import io.kotest.property.Exhaustive
 import io.kotest.property.PropTestConfig
@@ -13,6 +17,39 @@ import io.mockk.*
 @OptIn(ExperimentalKotest::class)
 class CombiningGeneratorTest: WordSpec() {
     init {
+        "A combining generator" should {
+            val combiningGenerator = CombiningGenerator(
+                nameGenerator(wordListOf("a", "b", "c", "d")),
+                nameGenerator(wordListOf("1", "2", "3"))
+            )
+            afterTest { combiningGenerator.reset() }
+
+            "First iterate the first generator, then the second" {
+                listOf("a1", "b1", "c1", "d1",
+                       "a2", "b2", "c2", "d2",
+                       "a3", "b3", "c3", "d3").forAll {
+                           combiningGenerator.nextAsString() shouldBe it
+                }
+            }
+
+            "be exhaustive" {
+                repeat(12) { combiningGenerator.next() }
+                shouldThrow<NameGeneratorExhaustedException> { combiningGenerator.next() }
+            }
+
+            "reset properly" {
+                combiningGenerator.nextAsString() shouldBe "a1"
+                combiningGenerator.nextAsString() shouldBe "b1"
+                combiningGenerator.nextAsString() shouldBe "c1"
+
+                combiningGenerator.reset()
+
+                combiningGenerator.nextAsString() shouldBe "a1"
+                combiningGenerator.nextAsString() shouldBe "b1"
+                combiningGenerator.nextAsString() shouldBe "c1"
+            }
+        }
+
         "The number of names to generate" should {
             "simply be the product of both name counts" {
                 checkAll<Int, Int>(PropTestConfig(iterations = 150)) { firstNameCount, secondNameCount ->
