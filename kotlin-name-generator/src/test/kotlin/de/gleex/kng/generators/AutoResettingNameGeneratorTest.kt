@@ -17,6 +17,13 @@ class AutoResettingNameGeneratorTest: WordSpec() {
                 AutoResettingNameGenerator(mockk<NameGenerator>()).isAutoResetting shouldBe true
             }
 
+            "use the delegate's nameCount" {
+                val delegatedGenerator = mockk<NameGenerator> {
+                    every { nameCount } returns 42
+                }
+                AutoResettingNameGenerator(delegatedGenerator).nameCount shouldBe 42
+            }
+
             "never throw an exhausted exception" {
                 val delegate = SimpleNameGenerator(wordListOf("foo", "bar"))
                 val autoResettingNameGenerator: AutoResettingNameGenerator = AutoResettingNameGenerator(delegate)
