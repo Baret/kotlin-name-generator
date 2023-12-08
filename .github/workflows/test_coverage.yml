@@ -47,8 +47,8 @@ jobs:
       with:
         script: |
           core.setFailed('Overall coverage is less than ${{ env.coverage-required-overall }}%! Current value: ${{ steps.jacoco.outputs.coverage-overall }}')
-    - name: Fail PR if coverage of changed code is less than ${{ env.coverage-required-changed }}%
-      if: ${{ github.ref != 'master' && steps.jacoco.outputs.coverage-changed-files < env.coverage-required-changed }}
+    - name: Fail PR if coverage of changed code is less than ${{ env.coverage-required-changed }}% (event_name = ${{ github.event_name }})
+      if: ${{ github.ref_name != 'master' && github.event_name != 'push' && steps.jacoco.outputs.coverage-changed-files < env.coverage-required-changed }}
       uses: actions/github-script@v6
       with:
         script: |
