@@ -31,7 +31,7 @@ jobs:
       uses: madrapps/jacoco-report@v1.6.1
       with:
         paths: |
-          ${{ github.workspace }}/kng-test-coverage-report/target/site/jacoco.xml
+          ${{ github.workspace }}/**/target/site/jacoco.xml
         token: ${{ secrets.GITHUB_TOKEN }}
         min-coverage-overall: ${{ env.coverage-required-overall }}
         min-coverage-changed-files: ${{ env.coverage-required-changed }}
