@@ -1,4 +1,4 @@
-name: Report test coverage
+name: Test coverage
 
 on:
   push:
