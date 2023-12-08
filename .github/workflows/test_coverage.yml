@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "**" ]
 
+env:
+  coverage-required-overall: 75.0
+  coverage-required-changed: 80.0
+
 jobs:
   report-coverage:
 
@@ -29,21 +33,23 @@ jobs:
         paths: |
           ${{ github.workspace }}/**/target/**/jacoco.xml
         token: ${{ secrets.GITHUB_TOKEN }}
-        min-coverage-overall: 75
-        min-coverage-changed-files: 80
+        min-coverage-overall: ${{ env.coverage-required-overall }}
+        min-coverage-changed-files: ${{ env.coverage-required-changed }}
         continue-on-error: false
         update-comment: true
         title: "Test coverage report"
         pass-emoji: ":green_circle:"
-    - name: Fail if overall coverage is less than 75%
-      if: ${{ steps.jacoco.outputs.coverage-overall < 75.0 }}
+    - run: echo 'Coverage overall ${{ steps.jacoco.outputs.coverage-overall }} of ${{ env.coverage-required-overall }}%'
+    - run: echo 'Coverage on changed code ${{ steps.jacoco.outputs.coverage-changed-files }} of ${{ env.coverage-required-changed }}%'
+    - name: Fail if overall coverage is less than ${{ env.coverage-required-overall }}%
+      if: ${{ steps.jacoco.outputs.coverage-overall < env.coverage-required-overall }}
       uses: actions/github-script@v6
       with:
         script: |
-          core.setFailed('Overall coverage is less than 75%!')
-    - name: Fail PR if coverage of changed code is less than 80%
-      if: ${{ github.ref != 'master' && steps.jacoco.outputs.coverage-changed-files < 80.0 }}
+          core.setFailed('Overall coverage is less than ${{ env.coverage-required-overall }}%!')
+    - name: Fail PR if coverage of changed code is less than ${{ env.coverage-required-changed }}%
+      if: ${{ github.ref != 'master' && steps.jacoco.outputs.coverage-changed-files < env.coverage-required-changed }}
       uses: actions/github-script@v6
       with:
         script: |
-          core.setFailed('Coverage of changed code is less than 80%!')
+          core.setFailed('Coverage of changed code is less than ${{ env.coverage-required-changed }}%!')
