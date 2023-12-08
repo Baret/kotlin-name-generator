@@ -5,7 +5,7 @@ import de.gleex.kng.api.WordList
 /**
  * Probably the simples implementation of [WordList]. It contains a [List].
  */
-class SimpleWordList(private val words: List<String>) : WordList {
+internal class SimpleWordList(private val words: List<String>) : WordList {
     override val size: Int = words.size
 
     override fun get(index: Int): String = words[index]
