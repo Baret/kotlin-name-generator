@@ -25,13 +25,13 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Test with Maven
-      run: mvn -B -U test jacoco:report
+      run: mvn -B -U verify
     - name: Add coverage to PR
       id: jacoco
       uses: madrapps/jacoco-report@v1.6.1
       with:
         paths: |
-          ${{ github.workspace }}/**/target/**/jacoco.xml
+          ${{ github.workspace }}/kng-test-coverage-report/target/site/jacoco.xml
         token: ${{ secrets.GITHUB_TOKEN }}
         min-coverage-overall: ${{ env.coverage-required-overall }}
         min-coverage-changed-files: ${{ env.coverage-required-changed }}
