@@ -2,6 +2,7 @@ package de.gleex.kng.api
 
 import io.kotest.common.ExperimentalKotest
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.types.shouldBeSameInstanceAs
 import io.kotest.property.PropTestConfig
 import io.kotest.property.checkAll
@@ -15,10 +16,12 @@ class NameTest: StringSpec() {
             }
         }
 
-//        "Add names" {
-//            checkAll<String, String>(PropTestConfig(iterations = 50)) {firstString, secondString ->
-//                val combinedName =
-//            }
-//        }
+        "Add names" {
+            checkAll<String, String>(PropTestConfig(iterations = 50)) {firstString, secondString ->
+                val combinedName = Name(firstString).plus(Name(" ")) + Name(secondString) + Name("!")
+
+                combinedName.asString() shouldBe "$firstString $secondString!"
+            }
+        }
     }
 }
