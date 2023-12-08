@@ -4,7 +4,8 @@ import de.gleex.kng.api.Name
 import de.gleex.kng.api.NameGenerator
 
 /**
- * TODO: docs
+ * A name generator combining the names of two other generators. This means
+ * it picks a name from one of them and then combines this name with all names of the other.
  */
 internal class CombiningGenerator(
     private val first: NameGenerator,
