@@ -31,7 +31,7 @@ jobs:
       uses: madrapps/jacoco-report@v1.6.1
       with:
         paths: |
-          ${{ github.workspace }}/**/target/**/jacoco.xml
+          ${{ github.workspace }}/**/target/site/jacoco/jacoco.xml
         token: ${{ secrets.GITHUB_TOKEN }}
         min-coverage-overall: ${{ env.coverage-required-overall }}
         min-coverage-changed-files: ${{ env.coverage-required-changed }}
@@ -42,13 +42,13 @@ jobs:
     - run: echo 'Coverage overall ${{ steps.jacoco.outputs.coverage-overall }} of ${{ env.coverage-required-overall }}%'
     - run: echo 'Coverage on changed code ${{ steps.jacoco.outputs.coverage-changed-files }} of ${{ env.coverage-required-changed }}%'
     - name: Fail if overall coverage is less than ${{ env.coverage-required-overall }}%
-      if: ${{ steps.jacoco.outputs.coverage-overall < env.coverage-required-overall }}
+      if: ${{ fromJSON(steps.jacoco.outputs.coverage-overall) < fromJSON(env.coverage-required-overall) }}
       uses: actions/github-script@v6
       with:
         script: |
           core.setFailed('Overall coverage is less than ${{ env.coverage-required-overall }}%! Current value: ${{ steps.jacoco.outputs.coverage-overall }}')
     - name: Fail PR if coverage of changed code is less than ${{ env.coverage-required-changed }}%
-      if: ${{ github.ref != 'master' && steps.jacoco.outputs.coverage-changed-files < env.coverage-required-changed }}
+      if: ${{ github.event_name == 'pull_request' && fromJSON(steps.jacoco.outputs.coverage-changed-files) < fromJSON(env.coverage-required-changed) }}
       uses: actions/github-script@v6
       with:
         script: |

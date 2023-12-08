@@ -10,6 +10,12 @@ value class Name(private val name: String) {
      */
     fun asString(): String = name
 
+    /**
+     * Combines this name with [otherName] by simple concatenating them.
+     *
+     * @param otherName to add to this name
+     * @return a new [Name] concatenating this and [otherName]
+     */
     operator fun plus(otherName: Name): Name {
         return Name(name + otherName.name)
     }
