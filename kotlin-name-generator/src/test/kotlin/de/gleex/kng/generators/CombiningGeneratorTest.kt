@@ -33,7 +33,11 @@ class CombiningGeneratorTest: WordSpec() {
             }
 
             "be exhaustive" {
-                repeat(12) { combiningGenerator.next() }
+                repeat(12) {
+                    combiningGenerator.hasNext() shouldBe true
+                    combiningGenerator.next()
+                }
+                combiningGenerator.hasNext() shouldBe false
                 shouldThrow<NameGeneratorExhaustedException> { combiningGenerator.next() }
             }
 
