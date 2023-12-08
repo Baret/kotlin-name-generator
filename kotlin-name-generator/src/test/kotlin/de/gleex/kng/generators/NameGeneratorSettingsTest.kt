@@ -1,5 +1,6 @@
 package de.gleex.kng.generators
 
+import io.kotest.assertions.assertSoftly
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
@@ -15,12 +16,19 @@ class NameGeneratorSettingsTest: WordSpec() {
                 NameGeneratorSettingsBuilder().build() should beInstanceOf<NameGeneratorSettings>()
             }
 
+            "result in reasonable default values" {
+                assertSoftly(NameGeneratorSettingsBuilder()) {
+                    autoReset shouldBe false
+                }
+            }
+
             "pass the autoReset flag" {
                 Exhaustive.boolean().checkAll {
                     val builder = NameGeneratorSettingsBuilder().apply {
                         autoReset = it
                     }
                     builder.build().isAutoResetting shouldBe it
+                    builder.autoReset shouldBe it
                 }
             }
         }
