@@ -1,4 +1,4 @@
-package de.gleex.kng.archtests
+package de.gleex.kng.architecture
 
 import com.tngtech.archunit.junit.AnalyzeClasses
 import com.tngtech.archunit.junit.ArchTest
@@ -15,4 +15,8 @@ class PackageRules {
 
     @ArchTest
     val noCycles = slices().matching("de.gleex.kng.(*)..").should().beFreeOfCycles()
+
+    @ArchTest
+    val independence = slices().matching("de.gleex.kng.(**)..")
+        .should().notDependOnEachOther()
 }
