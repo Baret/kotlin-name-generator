@@ -7,12 +7,11 @@ import com.tngtech.archunit.junit.ArchTest
 import com.tngtech.archunit.lang.syntax.ArchRuleDefinition.constructors
 import de.gleex.kng.api.NameGenerator
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.kotest.core.spec.style.WordSpec
 
 private val log = KotlinLogging.logger {  }
 
 @AnalyzeClasses(packages = ["de.gleex.kng"], importOptions = [ImportOption.DoNotIncludeTests::class])
-class VisibilityTest: WordSpec() {
+class VisibilityTest {
     @ArchTest
     val constructorsOnlyInBuilder = constructors()
         .that()
