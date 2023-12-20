@@ -64,11 +64,6 @@
             <artifactId>archunit-junit5</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.lemonappdev</groupId>
-            <artifactId>konsist</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
