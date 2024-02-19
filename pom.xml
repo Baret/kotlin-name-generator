@@ -11,6 +11,28 @@
 
     <name>Kotlin Name Generator (KNG) Parent</name>
     <description>The parent module holding all modules of KNG</description>
+    <url>https://github.com/Baret/kotlin-name-generator</url>
+
+    <scm>
+        <tag>HEAD</tag>
+        <url>http://github.com/Baret/kotlin-name-generator</url>
+        <connection>scm:git:git://github.com/Baret/kotlin-name-generator.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Baret/kotlin-name-generator.git</developerConnection>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Jan Stubenrauch</name>
+            <url>https://github.com/Baret</url>
+        </developer>
+    </developers>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
