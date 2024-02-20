@@ -101,6 +101,7 @@
                 <version>3.0.1</version>
                 <configuration>
                     <releaseProfiles>sign</releaseProfiles>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
                 </configuration>
             </plugin>
             <plugin>
