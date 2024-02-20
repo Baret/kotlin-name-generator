@@ -250,9 +250,6 @@
     <profiles>
         <profile>
             <id>sign</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <build>
                 <plugins>
                     <plugin>
