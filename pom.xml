@@ -16,8 +16,8 @@
     <scm>
         <tag>HEAD</tag>
         <url>http://github.com/Baret/kotlin-name-generator</url>
-        <connection>scm:git:git://github.com/Baret/kotlin-name-generator.git</connection>
-        <developerConnection>scm:git:ssh://github.com:Baret/kotlin-name-generator.git</developerConnection>
+        <connection>scm:git:https://github.com/Baret/kotlin-name-generator.git</connection>
+        <developerConnection>scm:git:git@github.com:Baret/kotlin-name-generator.git</developerConnection>
     </scm>
 
     <licenses>
