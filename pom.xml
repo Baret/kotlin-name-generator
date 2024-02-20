@@ -102,6 +102,7 @@
                 <configuration>
                     <releaseProfiles>sign</releaseProfiles>
                     <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
             <plugin>
