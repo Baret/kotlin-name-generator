@@ -3,6 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Maven release files ###
+*.releaseBackup
+release.properties
+
 ### IntelliJ IDEA ###
 .idea/
 *.iws
