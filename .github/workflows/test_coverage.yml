@@ -43,13 +43,13 @@ jobs:
     - run: echo 'Coverage on changed code ${{ steps.jacoco.outputs.coverage-changed-files }} of ${{ env.coverage-required-changed }}%'
     - name: Fail if overall coverage is less than ${{ env.coverage-required-overall }}%
       if: ${{ fromJSON(steps.jacoco.outputs.coverage-overall) < fromJSON(env.coverage-required-overall) }}
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           core.setFailed('Overall coverage is less than ${{ env.coverage-required-overall }}%! Current value: ${{ steps.jacoco.outputs.coverage-overall }}')
     - name: Fail PR if coverage of changed code is less than ${{ env.coverage-required-changed }}%
       if: ${{ github.event_name == 'pull_request' && fromJSON(steps.jacoco.outputs.coverage-changed-files) < fromJSON(env.coverage-required-changed) }}
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           core.setFailed('Coverage of changed code is less than ${{ env.coverage-required-changed }}%! Current value: ${{ steps.jacoco.outputs.coverage-changed-files }}')
