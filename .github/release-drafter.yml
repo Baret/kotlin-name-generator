@@ -1,6 +1,4 @@
 template: |
-  # v$RESOLVED_VERSION released!
-
   ## Changelog
 
   $CHANGES
