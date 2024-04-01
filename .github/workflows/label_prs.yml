@@ -4,15 +4,10 @@ on:
   pull_request:
     types:
       - opened
-  issues:
-    types:
-      - labeled
       - unlabeled
-      - opened
-  workflow_dispatch:
 
 jobs:
-  issue_prs:
+  label_prs:
     runs-on: ubuntu-latest
     steps:
       - name: Put issue labels on their PRs
