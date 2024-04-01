@@ -9,6 +9,8 @@ on:
 jobs:
   label_prs:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - name: Put issue labels on their PRs
         uses: nmoral/github-action-label-pull-request@v1.0.0
