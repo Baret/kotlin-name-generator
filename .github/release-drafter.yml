@@ -14,6 +14,9 @@ categories:
   - title: 'Bug Fixes'
     labels:
       - 'bug'
+  - title: 'Documentation'
+    labels:
+      - 'documentation'
   - title: 'Other changes'
     labels:
       - 'misc'
@@ -41,3 +44,12 @@ replacers:
 # direct issue references
   - search: '/issue\W+#?\d+[ :]?\W+/gi'
     replace: ''
+autolabeler:
+  - label: 'bug'
+    branch:
+      - '/(fix|bugfix)\/.+/'
+    title:
+      - '/fix/i'
+  - label: 'feature'
+    branch:
+      - '/feature\/.+/'
