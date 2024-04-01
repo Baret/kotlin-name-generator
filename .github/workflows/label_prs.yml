@@ -1,0 +1,21 @@
+name: Draft next release
+
+on:
+  pull_request:
+    types:
+      - opened
+  issues:
+    types:
+      - labeled
+      - unlabeled
+      - opened
+  workflow_dispatch:
+
+jobs:
+  issue_prs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Put issue labels on their PRs
+        uses: nmoral/github-action-label-pull-request@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
