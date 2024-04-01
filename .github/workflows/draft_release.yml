@@ -10,7 +10,8 @@ on:
 jobs:
   draft_next_release:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
       - name: Draft next release
         uses: release-drafter/release-drafter@v6.0.0
