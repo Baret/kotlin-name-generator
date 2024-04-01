@@ -19,7 +19,6 @@ categories:
   - title: 'Other changes'
     labels:
       - 'misc'
-      - ''
   - title: 'Dependency updates'
     labels:
       - 'dependencies::major'
