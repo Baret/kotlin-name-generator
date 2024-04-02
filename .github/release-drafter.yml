@@ -1,9 +1,23 @@
 template: |
+  ## Artifacts
+  
+  Kotlin Name Generator is published to Maven Central. Find the artifacts [here](https://central.sonatype.com/namespace/de.gleex.kng).
+  
+  You most probably need `[de.gleex.kng:kotlin-name-generator:$RESOLVED_VERSION](https://central.sonatype.com/artifact/de.gleex.kng/kotlin-name-generator/$RESOLVED_VERSION)`
+  
+  ```xml
+  <dependency>
+    <groupId>de.gleex.kng</groupId>
+    <artifactId>kotlin-name-generator</artifactId>
+    <version>$RESOLVED_VERSION</version>
+  </dependency>
+  ```
+  
   ## Changelog
 
   $CHANGES
 name-template: 'KNG v$RESOLVED_VERSION'
-#tag-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
 no-changes-template: '### Nothing included yet'
 change-template: '- $TITLE [PR #$NUMBER]'
 categories:
