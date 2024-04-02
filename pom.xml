@@ -46,7 +46,7 @@
         <dokka.version>1.9.20</dokka.version>
         <kotest.version>5.8.1</kotest.version>
 
-        <jacoco.plugin.version>0.8.11</jacoco.plugin.version>
+        <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
     </properties>
 
     <modules>
