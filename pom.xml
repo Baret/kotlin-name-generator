@@ -53,6 +53,7 @@
         <module>kotlin-name-generator-api</module>
         <module>kotlin-name-generator</module>
         <module>kotlin-name-generator-examples</module>
+        <module>kotlin-name-generator-archtests</module>
     </modules>
 
     <dependencyManagement>
@@ -78,7 +79,6 @@
                 <version>1.13.10</version>
                 <scope>test</scope>
             </dependency>
-
             <dependency>
                 <groupId>com.tngtech.archunit</groupId>
                 <artifactId>archunit-junit5</artifactId>

@@ -1,3 +1,4 @@
+@file:JvmName("NameGenerators")
 package de.gleex.kng.generators
 
 import de.gleex.kng.api.NameGenerator
