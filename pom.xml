@@ -36,7 +36,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin.code.style>official</kotlin.code.style>
 
-        <kotlin.version>1.9.23</kotlin.version>
+        <kotlin.version>1.9.24</kotlin.version>
         <kotlin.api.version>1.9</kotlin.api.version>
         <kotlin.compiler.languageVersion>1.9</kotlin.compiler.languageVersion>
         <kotlin.compiler.jvmTarget>21</kotlin.compiler.jvmTarget>
