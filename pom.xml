@@ -44,7 +44,7 @@
         <maven.compiler.release>21</maven.compiler.release>
 
         <dokka.version>1.9.20</dokka.version>
-        <kotest.version>5.8.1</kotest.version>
+        <kotest.version>5.9.0</kotest.version>
 
         <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
     </properties>
