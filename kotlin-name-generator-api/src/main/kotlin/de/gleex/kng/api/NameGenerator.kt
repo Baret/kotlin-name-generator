@@ -11,6 +11,8 @@ package de.gleex.kng.api
  * ```
  * **Be sure to check for [isAutoResetting] before iterating!** An auto-resetting name
  * generator will create an endless loop.
+ *
+ * **Important hint**: Implementations of this interface DO NOT need to be thread safe!
  */
 interface NameGenerator: Iterator<Name> {
 

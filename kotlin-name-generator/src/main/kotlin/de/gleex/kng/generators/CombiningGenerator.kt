@@ -11,6 +11,8 @@ internal class CombiningGenerator(
     private val first: NameGenerator,
     private val second: NameGenerator
 ): NameGenerator {
+    private var firstInvocations = 0
+
     private var secondName: Name? = null
 
     override val isAutoResetting: Boolean by lazy { first.isAutoResetting || second.isAutoResetting }
@@ -21,24 +23,30 @@ internal class CombiningGenerator(
         if(secondName == null) {
             secondName = second.next()
         }
-        if(first.hasNext().not()) {
-            first.reset()
+        if(firstInvocations == first.nameCount) {
+            if(first.isAutoResetting.not()) {
+                first.reset()
+            }
+            firstInvocations = 0
             secondName = second.next()
         }
-        return first.next() + secondName!!
+        val next = first.next()
+        firstInvocations++
+        return next + secondName!!
     }
 
     override fun reset() {
+        firstInvocations = 0
         first.reset()
         second.reset()
         secondName = null
     }
 
     override fun hasNext(): Boolean {
-        return if(second.hasNext().not()) {
-            first.hasNext()
+        return if(firstInvocations == first.nameCount) {
+            first.hasNext() || second.hasNext()
         } else {
-            second.hasNext()
+            first.hasNext()
         }
     }
 }
