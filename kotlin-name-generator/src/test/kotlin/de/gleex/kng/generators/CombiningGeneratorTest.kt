@@ -15,7 +15,7 @@ import io.kotest.property.exhaustive.boolean
 import io.mockk.*
 
 @OptIn(ExperimentalKotest::class)
-class CombiningGeneratorTest: WordSpec() {
+class CombiningGeneratorTest : WordSpec() {
     init {
         "A combining generator" should {
             val combiningGenerator = CombiningGenerator(
@@ -25,10 +25,12 @@ class CombiningGeneratorTest: WordSpec() {
             afterTest { combiningGenerator.reset() }
 
             "First iterate the first generator, then the second" {
-                listOf("a1", "b1", "c1", "d1",
-                       "a2", "b2", "c2", "d2",
-                       "a3", "b3", "c3", "d3").forAll {
-                           combiningGenerator.nextAsString() shouldBe it
+                listOf(
+                    "a1", "b1", "c1", "d1",
+                    "a2", "b2", "c2", "d2",
+                    "a3", "b3", "c3", "d3"
+                ).forAll {
+                    combiningGenerator.nextAsString() shouldBe it
                 }
             }
 
@@ -94,7 +96,10 @@ class CombiningGeneratorTest: WordSpec() {
                     val secondMock = mockk<NameGenerator> {
                         every { isAutoResetting } returns secondAutoReset
                     }
-                    CombiningGenerator(firstMock, secondMock).isAutoResetting shouldBe (firstAutoReset || secondAutoReset)
+                    CombiningGenerator(
+                        firstMock,
+                        secondMock
+                    ).isAutoResetting shouldBe (firstAutoReset || secondAutoReset)
                 }
             }
 
@@ -137,6 +142,94 @@ class CombiningGeneratorTest: WordSpec() {
                     child2.reset()
                     child3.reset()
                 }
+            }
+        }
+
+        "Combining CombiningGenerators" should {
+            "iterate over all of them" {
+                val firstGen = nameGenerator(wordListOf("A", "B")) {
+                    autoReset = true
+                }
+                val secondGen = nameGenerator(wordListOf("a", "b")) {
+                    autoReset = true
+                }
+                val thirdGen = nameGenerator(wordListOf("C", "D")) {
+                    autoReset = true
+                }
+                val fourthGen = nameGenerator(wordListOf("c", "d")) {
+                    autoReset = true
+                }
+
+                val firstCombo = CombiningGenerator(firstGen, secondGen)
+                val secondCombo = CombiningGenerator(thirdGen, fourthGen)
+
+                val generatorUnderTest = CombiningGenerator(firstCombo, secondCombo)
+
+                generatorUnderTest.nextAsString() shouldBe "AaCc"
+                generatorUnderTest.nextAsString() shouldBe "BaCc"
+                generatorUnderTest.nextAsString() shouldBe "AbCc"
+                generatorUnderTest.nextAsString() shouldBe "BbCc"
+
+                generatorUnderTest.nextAsString() shouldBe "AaDc"
+                generatorUnderTest.nextAsString() shouldBe "BaDc"
+                generatorUnderTest.nextAsString() shouldBe "AbDc"
+                generatorUnderTest.nextAsString() shouldBe "BbDc"
+
+                generatorUnderTest.nextAsString() shouldBe "AaCd"
+                generatorUnderTest.nextAsString() shouldBe "BaCd"
+                generatorUnderTest.nextAsString() shouldBe "AbCd"
+                generatorUnderTest.nextAsString() shouldBe "BbCd"
+
+                generatorUnderTest.nextAsString() shouldBe "AaDd"
+                generatorUnderTest.nextAsString() shouldBe "BaDd"
+                generatorUnderTest.nextAsString() shouldBe "AbDd"
+                generatorUnderTest.nextAsString() shouldBe "BbDd"
+
+                generatorUnderTest.nextAsString() shouldBe "AaCc"
+            }
+            "work with non-resetting generators" {
+                val firstGen = nameGenerator(wordListOf("A", "B")) {
+                    autoReset = false
+                }
+                val secondGen = nameGenerator(wordListOf("a", "b")) {
+                    autoReset = false
+                }
+                val thirdGen = nameGenerator(wordListOf("C", "D")) {
+                    autoReset = false
+                }
+                val fourthGen = nameGenerator(wordListOf("c", "d")) {
+                    autoReset = false
+                }
+
+                val firstCombo = CombiningGenerator(firstGen, secondGen)
+                val secondCombo = CombiningGenerator(thirdGen, fourthGen)
+
+                val generatorUnderTest = CombiningGenerator(firstCombo, secondCombo)
+
+                generatorUnderTest.nameCount shouldBe 16
+                generatorUnderTest.isAutoResetting shouldBe false
+
+                generatorUnderTest.nextAsString() shouldBe "AaCc"
+                generatorUnderTest.nextAsString() shouldBe "BaCc"
+                generatorUnderTest.nextAsString() shouldBe "AbCc"
+                generatorUnderTest.nextAsString() shouldBe "BbCc"
+
+                generatorUnderTest.nextAsString() shouldBe "AaDc"
+                generatorUnderTest.nextAsString() shouldBe "BaDc"
+                generatorUnderTest.nextAsString() shouldBe "AbDc"
+                generatorUnderTest.nextAsString() shouldBe "BbDc"
+
+                generatorUnderTest.nextAsString() shouldBe "AaCd"
+                generatorUnderTest.nextAsString() shouldBe "BaCd"
+                generatorUnderTest.nextAsString() shouldBe "AbCd"
+                generatorUnderTest.nextAsString() shouldBe "BbCd"
+
+                generatorUnderTest.nextAsString() shouldBe "AaDd"
+                generatorUnderTest.nextAsString() shouldBe "BaDd"
+                generatorUnderTest.nextAsString() shouldBe "AbDd"
+                generatorUnderTest.nextAsString() shouldBe "BbDd"
+
+                shouldThrow<NameGeneratorExhaustedException> { generatorUnderTest.next() }
             }
         }
     }
