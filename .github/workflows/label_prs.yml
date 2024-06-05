@@ -13,5 +13,7 @@ jobs:
     steps:
       - name: Put issue labels on their PRs
         uses: nmoral/github-action-label-pull-request@v1.0.0
+        with:
+          clean-before-fetching: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
