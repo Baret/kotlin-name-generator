@@ -1,4 +1,4 @@
-[![Maven build](https://github.com/Baret/kotlin-name-generator/actions/workflows/maven_build.yml/badge.svg)](https://github.com/Baret/kotlin-name-generator/actions/workflows/maven_build.yml) [![Test coverage](https://github.com/Baret/kotlin-name-generator/actions/workflows/test_coverage.yml/badge.svg?branch=main)](https://github.com/Baret/kotlin-name-generator/actions/workflows/test_coverage.yml)
+[![Maven build](https://github.com/Baret/kotlin-name-generator/actions/workflows/maven_build.yml/badge.svg)](https://github.com/Baret/kotlin-name-generator/actions/workflows/maven_build.yml) [![Test coverage](https://github.com/Baret/kotlin-name-generator/actions/workflows/test_coverage.yml/badge.svg?branch=main)](https://github.com/Baret/kotlin-name-generator/actions/workflows/test_coverage.yml) [![javadoc](https://javadoc.io/badge2/de.gleex.kng/kotlin-name-generator/javadoc.svg)](https://javadoc.io/doc/de.gleex.kng/kotlin-name-generator)  [![javadoc API](https://javadoc.io/badge2/de.gleex.kng/kotlin-name-generator-api/javadoc.svg?label=javadoc%20API)](https://javadoc.io/doc/de.gleex.kng/kotlin-name-generator-api) 
 
 # What is Kotlin Name Generator?
 
