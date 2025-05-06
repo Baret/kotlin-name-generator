@@ -28,7 +28,7 @@ jobs:
       run: mvn -B -U test jacoco:report
     - name: Add coverage to PR
       id: jacoco
-      uses: madrapps/jacoco-report@v1.7.1
+      uses: madrapps/jacoco-report@v1.7.2
       with:
         paths: |
           ${{ github.workspace }}/**/target/site/jacoco/jacoco.xml
