@@ -43,7 +43,7 @@
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
         <maven.compiler.release>21</maven.compiler.release>
 
-        <dokka.version>1.9.20</dokka.version>
+        <dokka.version>2.0.0</dokka.version>
         <kotest.version>5.9.1</kotest.version>
 
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
