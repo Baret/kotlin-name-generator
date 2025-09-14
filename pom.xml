@@ -4,7 +4,7 @@
 
     <groupId>de.gleex.kng</groupId>
     <artifactId>kotlin-name-generator-parent</artifactId>
-    <version>0.1.4</version>
+    <version>0.1.5-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Kotlin Name Generator (KNG) Parent</name>
@@ -12,7 +12,7 @@
     <url>https://github.com/Baret/kotlin-name-generator</url>
 
     <scm>
-        <tag>v0.1.4</tag>
+        <tag>HEAD</tag>
         <url>http://github.com/Baret/kotlin-name-generator</url>
         <connection>scm:git:https://github.com/Baret/kotlin-name-generator.git</connection>
         <developerConnection>scm:git:git@github.com:Baret/kotlin-name-generator.git</developerConnection>
