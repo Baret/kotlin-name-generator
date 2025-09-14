@@ -38,11 +38,6 @@
         </dependency>
         <dependency>
             <groupId>io.kotest</groupId>
-            <artifactId>kotest-framework-datatest-jvm</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.kotest</groupId>
             <artifactId>kotest-property-jvm</artifactId>
             <scope>test</scope>
         </dependency>

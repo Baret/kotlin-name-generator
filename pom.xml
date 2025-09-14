@@ -44,6 +44,8 @@
         <maven.compiler.release>21</maven.compiler.release>
 
         <dokka.version>1.9.20</dokka.version>
+
+        <junit.jupiter.version>5.13.4</junit.jupiter.version>
         <kotest.version>6.0.3</kotest.version>
 
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
@@ -65,6 +67,14 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <!-- managing jupiter directly because kotest and mockk come with different versions -->
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>io.kotest</groupId>
                 <artifactId>kotest-bom</artifactId>
