@@ -43,7 +43,7 @@
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
         <maven.compiler.release>21</maven.compiler.release>
 
-        <dokka.version>2.0.0</dokka.version>
+        <dokka.version>2.1.0</dokka.version>
 
         <junit.jupiter.version>6.0.0</junit.jupiter.version>
         <kotest.version>6.0.4</kotest.version>
