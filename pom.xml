@@ -48,7 +48,7 @@
         <junit.jupiter.version>6.1.0</junit.jupiter.version>
         <kotest.version>6.1.11</kotest.version>
 
-        <jacoco.plugin.version>0.8.14</jacoco.plugin.version>
+        <jacoco.plugin.version>0.8.15</jacoco.plugin.version>
     </properties>
 
     <modules>
