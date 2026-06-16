@@ -46,7 +46,7 @@
         <dokka.version>2.2.0</dokka.version>
 
         <junit.jupiter.version>6.1.0</junit.jupiter.version>
-        <kotest.version>6.1.11</kotest.version>
+        <kotest.version>6.2.0</kotest.version>
 
         <jacoco.plugin.version>0.8.15</jacoco.plugin.version>
     </properties>
